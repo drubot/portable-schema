@@ -1,7 +1,5 @@
 # Registry
 
-Status: draft.
-
 How schema files on disk get their IDs. The rules for IDs themselves are in [`validation.md`](validation.md#registry).
 
 ## Schema IDs
