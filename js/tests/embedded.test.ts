@@ -12,7 +12,7 @@ const ROOT = join(DIRECTORY, "..");
 const files = (directory: string, extension: string): string[] =>
   (readdirSync(join(ROOT, directory), { recursive: true }) as string[]).filter((file) => file.endsWith(extension)).sort();
 
-/** The JSON text of a file of the repository, as scripts/embed.mjs embeds it. */
+/** The JSON text of a file of the repository, as js/scripts/embed.mjs embeds it. */
 const json = (file: string): string => JSON.stringify(JSON.parse(readFileSync(join(ROOT, file), "utf8")));
 
 test("withTypes() holds the schemas of types/v1", () => {

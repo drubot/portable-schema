@@ -10,7 +10,7 @@ Written in TypeScript, published as plain ES modules with type declarations:
 
 The validator carries what it needs from the repository, so it runs from the package's `dist` alone:
 
-- **Embedded resources:** the meta-schemas of `spec/v1/`, the type library of `types/v1/` and `messages/en.json` are embedded as JSON text in `src/embedded.ts`. [`scripts/embed.mjs`](../scripts/embed.mjs) generates that file before every build and test run; it is not committed.
+- **Embedded resources:** the meta-schemas of `spec/v1/`, the type library of `types/v1/` and `messages/en.json` are embedded as JSON text in `src/embedded.ts`. [`scripts/embed.mjs`](scripts/embed.mjs) generates that file before every build and test run; it is not committed.
 - **No file access, no Node.js imports:** the validator reads no files and its sources import no Node.js module, so it also runs bundled (e.g. Vite, Nitro) and in a browser.
 - **`Registry.addDirectory()` is Node.js only:** it reads files, with modules it gets from `process.getBuiltinModule()` when called (Node 22.3+). Elsewhere it throws; add the schemas with `Registry.add()`.
 
@@ -50,4 +50,4 @@ npm run build
 npm test
 ```
 
-`npm test` type-checks the tests and runs every fixture under [`fixtures/`](../fixtures) with Vitest. Both scripts first generate `src/embedded.ts`; to run `tsc`, `tsx` or `vitest` directly after changing `spec/`, `types/` or `messages/`, run `node scripts/embed.mjs` in the repository root first.
+`npm test` type-checks the tests and runs every fixture under [`fixtures/`](../fixtures) with Vitest. Both scripts first generate `src/embedded.ts`; to run `tsc`, `tsx` or `vitest` directly after changing `spec/`, `types/` or `messages/`, run `node scripts/embed.mjs` in `js/` first.
